@@ -1,10 +1,9 @@
 function FindProxyForURL(url, host) {
-    // Список доменов для Грока и Икса
+    // Направляем Грока и Икс через наш сервер на Хаггинге
     if (shExpMatch(host, "*.x.ai") || shExpMatch(host, "x.ai") || shExpMatch(host, "*.twitter.com") || shExpMatch(host, "x.com") || shExpMatch(host, "*.x.com")) {
-        // Используем HTTPS прокси, чтобы Хаггинг принял соединение
-        return "HTTPS bksirlancelot-my-grok-unlocked.hf.space:443";
+        // Пробуем SOCKS5, он стабильнее для проброса через VPN
+        return "SOCKS5 bksirlancelot-my-grok-unlocked.hf.space:443; SOCKS bksirlancelot-my-grok-unlocked.hf.space:443; HTTPS bksirlancelot-my-grok-unlocked.hf.space:443";
     }
-
-    // Всё остальное идет напрямую (через твой инет)
+    // Всё остальное идет напрямую
     return "DIRECT";
 }
