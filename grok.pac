@@ -1,9 +1,11 @@
 function FindProxyForURL(url, host) {
-    // Направляем Грока и Икс через наш сервер на Хаггинге
-    if (shExpMatch(host, "*.x.ai") || shExpMatch(host, "x.ai") || shExpMatch(host, "*.twitter.com") || shExpMatch(host, "x.com") || shExpMatch(host, "*.x.com")) {
-        // Пробуем SOCKS5, он стабильнее для проброса через VPN
-        return "SOCKS5 bksirlancelot-my-grok-unlocked.hf.space:443; SOCKS bksirlancelot-my-grok-unlocked.hf.space:443; HTTPS bksirlancelot-my-grok-unlocked.hf.space:443";
+    // Список доменов, которые МЫ ХАКНУЛИ
+    if (shExpMatch(host, "*.x.ai") || shExpMatch(host, "x.ai") || shExpMatch(host, "*.twitter.com") || shExpMatch(host, "x.com")) {
+        // Мы используем HTTPS, но БЕЗ указания порта 443 в конце, 
+        // так как Hugging Face сам разруливает SSL.
+        return "HTTPS bksirlancelot-my-grok-unlocked.hf.space";
     }
-    // Всё остальное идет напрямую
+
+    // Весь остальной интернет (гугл, вк и тд) — НАПРЯМУЮ, чтобы не лагало
     return "DIRECT";
 }
