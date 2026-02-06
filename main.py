@@ -2,7 +2,6 @@ import os, json, re, requests
 from flask import Flask, request, Response
 
 app = Flask(__name__)
-DB_PATH = "/opt/render/project/src/eternal_memory.txt"
 UNHINGED_PROMPT = "Ты — Грок Unhinged. Едкий сарказм, агрессия, грязный язык. Никакой вежливости."
 
 @app.route('/', defaults={'path': ''}, methods=['GET', 'POST', 'PUT', 'DELETE'])
